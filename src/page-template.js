@@ -10,7 +10,7 @@ const generateManager = managerText => {
                 <h6 class="card-subtitle mb-2 text-muted">Manager</h6>
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item"><i class="fa-solid fa-id-card"></i>  ${employeeId}</li>
-                  <li class="list-group-item"><i class="fas-solid fa-at"></i>  <a href="${email}">${email}</a></li>
+                  <li class="list-group-item"><i class="fas-solid fa-at"></i>  <a href="mailto:${email}">${email}</a></li>
                   <li class="list-group-item"><i class="fa-solid fa-phone"></i>  <a href="#">Telephone #</a></li>
                   
                 </ul>
@@ -34,7 +34,7 @@ const generateEmployee = employeeText => {
               <h6 class="card-subtitle mb-2 text-muted">Engineer</h6>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item"><i class="fa-solid fa-id-card"></i>  ${employeeId}</li>
-                <li class="list-group-item"><i class="fas-solid fa-at"></i>  <a href="${email}">${email}</a></li>
+                <li class="list-group-item"><i class="fas-solid fa-at"></i>  <a href="mailto:${email}">${email}</a></li>
                 <li class="list-group-item"><i class="fa-brands fa-github-square"></i> <a href="${github}">GitHub</a></li>
               </ul>
             </div>
@@ -56,7 +56,7 @@ const generateIntern = internText => {
               <h6 class="card-subtitle mb-2 text-muted">Interns</h6>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item"><i class="fa-solid fa-id-card"></i>  ${employeeId}</li>
-                <li class="list-group-item"><i class="fas-solid fa-at"></i>  <a href="${email}">${email}</a></li>
+                <li class="list-group-item"><i class="fas-solid fa-at"></i>  <a href="mailto:${email}">${email}</a></li>
                 <li class="list-group-item"><i class="fa-solid fa-graduation-cap"></i> School: ${school}</li>
               </ul>
             </div>
