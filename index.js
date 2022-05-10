@@ -43,11 +43,12 @@ const promptUser = () => {
     .then(response => {
       console.log(response);
       if (response.type === "Employee") {
-        engineerQuestions();
+        promptAddEngineer();
       } else if (response.type === "Intern") {
-        internQuestions();
+        promptAddIntern();
       } else {
-      }
+        console.log("You're finished!");
+      } // to be changed
     });
 };
 
@@ -150,7 +151,7 @@ Add an Intern
 };
 
 promptUser()
-  .then(promptAddEngineer)
+  .then()
   .then(generateTeam => {
     return generatePage(generateTeam);
   });
