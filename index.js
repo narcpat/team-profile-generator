@@ -41,6 +41,27 @@ const promptUser = () => {
       },
     ])
     .then(response => {
+      if (response.type === "Employee") {
+        promptAddMore();
+      } else if (response.type === "Intern") {
+        promptAddMore();
+      } else {
+        console.log("You're done!");
+      }
+    });
+};
+
+const promptAddMore = moreStaff => {
+  inquirer
+    .prompt([
+      {
+        type: "list",
+        name: "confirmMoreEmployee",
+        message: "Would you like to add another Employee or Intern?",
+        choices: ["Employee", "Intern", "End Session"],
+      },
+    ])
+    .then(answer => {
       console.log(response);
       if (response.type === "Employee") {
         promptAddEngineer();
@@ -48,7 +69,7 @@ const promptUser = () => {
         promptAddIntern();
       } else {
         console.log("You're finished!");
-      } // to be changed
+      }
     });
 };
 
@@ -150,8 +171,6 @@ Add an Intern
   ]);
 };
 
-promptUser()
-  .then()
-  .then(generateTeam => {
-    return generatePage(generateTeam);
-  });
+promptUser().then(generateTeam => {
+  return generatePage(generateTeam);
+});
