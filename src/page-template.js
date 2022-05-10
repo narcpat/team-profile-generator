@@ -11,7 +11,7 @@ const generateManager = managerText => {
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item"><i class="fa-solid fa-id-card"></i>  ${employeeId}</li>
                   <li class="list-group-item"><i class="fas-solid fa-at"></i>  <a href="mailto:${email}">${email}</a></li>
-                  <li class="list-group-item"><i class="fa-solid fa-phone"></i>  <a href="#">Telephone #</a></li>
+                  <li class="list-group-item"><i class="fa-solid fa-phone"></i>  <a href="tel:+${officeNumber}"> ${officeNumber}</a></li>
                   
                 </ul>
               </div>
@@ -22,12 +22,12 @@ const generateManager = managerText => {
 };
 
 // create the employees section
-const generateEmployee = employeeText => {
+const generateEngineer = engineerText => {
   return `
   <section class="employee mt-3 row" id="aboutEmployee">
           <h2>Employees</h2>
 
-          <!-- EMPLOYEE CARDS -->
+          <!-- ENGINEER CARDS -->
           <div class="card shadow" style="width: 18rem;">
             <div class="card-body">
               <h5 class="card-title">${name}</h5>
@@ -35,7 +35,7 @@ const generateEmployee = employeeText => {
               <ul class="list-group list-group-flush">
                 <li class="list-group-item"><i class="fa-solid fa-id-card"></i>  ${employeeId}</li>
                 <li class="list-group-item"><i class="fas-solid fa-at"></i>  <a href="mailto:${email}">${email}</a></li>
-                <li class="list-group-item"><i class="fa-brands fa-github-square"></i> <a href="${github}">GitHub</a></li>
+                <li class="list-group-item"><i class="fa-brands fa-github-square"></i> <a href="https://github.com/${github}">GitHub: ${github}</a></li>
               </ul>
             </div>
           </div>
@@ -68,7 +68,7 @@ const generateIntern = internText => {
 // create the export function to generate the whole page
 module.exports = templateData => {
   // destructure page data by section
-  const { manager, employee, intern } = templateData;
+  const { manager, engineer, intern } = templateData;
 
   return `
       <!DOCTYPE html>
@@ -93,7 +93,7 @@ module.exports = templateData => {
       <!-- MAIN CONTENT SECTION -->
       <main class="container">
         ${generateManager(manager)}
-        ${generateEmployee(employee)}
+        ${generateEngineer(engineer)}
         ${generateIntern(intern)}
       </main>
       <!-- END OF MAIN -->
