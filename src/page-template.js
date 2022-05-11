@@ -68,7 +68,7 @@ const generateIntern = internText => {
 // create the export function to generate the whole page
 module.exports = templateData => {
   // destructure page data by section
-  const { manager, engineer, intern } = templateData;
+  // const { manager, engineer, intern } = templateData;
 
   return `
       <!DOCTYPE html>

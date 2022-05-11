@@ -33,26 +33,14 @@ const promptUser = () => {
         name: "officeNumber",
         message: "Please enter your work phone number!",
       },
-      {
-        type: "list",
-        name: "confirmEmployee",
-        message: "Would you like to add an Employee or an Intern?",
-        choices: ["Employee", "Intern"],
-      },
     ])
     .then(response => {
-      if (response.type === "Employee") {
-        promptAddMore();
-      } else if (response.type === "Intern") {
-        promptAddMore();
-      } else {
-        console.log("You're done!");
-      }
+      promptAddMore();
     });
 };
 
 const promptAddMore = moreStaff => {
-  inquirer
+  return inquirer
     .prompt([
       {
         type: "list",
@@ -61,14 +49,15 @@ const promptAddMore = moreStaff => {
         choices: ["Employee", "Intern", "End Session"],
       },
     ])
-    .then(answer => {
+    .then(response => {
       console.log(response);
-      if (response.type === "Employee") {
+      if (response.confirmMoreEmployee === "Employee") {
         promptAddEngineer();
-      } else if (response.type === "Intern") {
+      } else if (response.confirmMoreEmployee === "Intern") {
         promptAddIntern();
       } else {
         console.log("You're finished!");
+        generatePage();
       }
     });
 };
@@ -171,6 +160,7 @@ Add an Intern
   ]);
 };
 
-promptUser().then(generateTeam => {
-  return generatePage(generateTeam);
-});
+promptUser();
+// .then(generateTeam => {
+//   return generatePage(generateTeam);
+// });
