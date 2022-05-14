@@ -194,6 +194,3 @@ Add an Intern
 };
 
 promptUser();
-// .then(generateTeam => {
-//   return generatePage(generateTeam);
-// });

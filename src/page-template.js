@@ -10,7 +10,7 @@ const generateManager = manager => {
                 <h6 class="card-subtitle mb-2 text-muted">Manager</h6>
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item"><i class="fa-solid fa-id-card"></i>  ${manager.employeeId}</li>
-                  <li class="list-group-item"><i class="fas-solid fa-at"></i>  <a href="mailto:${manager.email}">${manager.email}</a></li>
+                  <li class="list-group-item"><i class="fas-solid fa-at"></i>  <a href="mailto:${manager.email}" target="_blank">${manager.email}</a></li>
                   <li class="list-group-item"><i class="fa-solid fa-phone"></i>  <a href="tel:+${manager.officeNumber}"> ${manager.officeNumber}</a></li>
                   
                 </ul>
@@ -33,8 +33,8 @@ const generateEngineer = engineer => {
               <h6 class="card-subtitle mb-2 text-muted">Engineer</h6>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item"><i class="fa-solid fa-id-card"></i>  ${engineer.employeeId}</li>
-                <li class="list-group-item"><i class="fas-solid fa-at"></i>  <a href="mailto:${engineer.email}">${engineer.email}</a></li>
-                <li class="list-group-item"><i class="fa-brands fa-github-square"></i> <a href="https://github.com/${engineer.github}">GitHub: ${engineer.github}</a></li>
+                <li class="list-group-item"><i class="fas-solid fa-at"></i>  <a href="mailto:${engineer.email}" target="_blank">${engineer.email}</a></li>
+                <li class="list-group-item"><i class="fa-brands fa-github-square"></i> <a href="https://github.com/${engineer.github}" target="_blank">GitHub: ${engineer.github}</a></li>
               </ul>
             </div>
           </div>
@@ -50,11 +50,11 @@ const generateIntern = intern => {
         
           <div class="card shadow" style="width: 18rem;">
             <div class="card-body">
-              <h5 class="card-title">Name</h5>
+              <h5 class="card-title">${intern.name}</h5>
               <h6 class="card-subtitle mb-2 text-muted">Interns</h6>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item"><i class="fa-solid fa-id-card"></i>  ${intern.employeeId}</li>
-                <li class="list-group-item"><i class="fas-solid fa-at"></i>  <a href="mailto:${intern.email}">${intern.email}</a></li>
+                <li class="list-group-item"><i class="fas-solid fa-at"></i>  <a href="mailto:${intern.email}" target="_blank">${intern.email}</a></li>
                 <li class="list-group-item"><i class="fa-solid fa-graduation-cap"></i> School: ${intern.school}</li>
               </ul>
             </div>
