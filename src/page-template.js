@@ -1,17 +1,17 @@
 // create the manager section
-const generateManager = managerText => {
+const generateManager = manager => {
   return `
   <section class="manager mt-3 row" id="aboutManager">
           <h2>Manager</h2>
           <!-- MANAGER CARD -->
             <div class="card shadow" style="width: 18rem;">
               <div class="card-body">
-                <h5 class="card-title">${name}</h5>
+                <h5 class="card-title">${manager.name}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Manager</h6>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item"><i class="fa-solid fa-id-card"></i>  ${employeeId}</li>
-                  <li class="list-group-item"><i class="fas-solid fa-at"></i>  <a href="mailto:${email}">${email}</a></li>
-                  <li class="list-group-item"><i class="fa-solid fa-phone"></i>  <a href="tel:+${officeNumber}"> ${officeNumber}</a></li>
+                  <li class="list-group-item"><i class="fa-solid fa-id-card"></i>  ${manager.employeeId}</li>
+                  <li class="list-group-item"><i class="fas-solid fa-at"></i>  <a href="mailto:${manager.email}">${manager.email}</a></li>
+                  <li class="list-group-item"><i class="fa-solid fa-phone"></i>  <a href="tel:+${manager.officeNumber}"> ${manager.officeNumber}</a></li>
                   
                 </ul>
               </div>
@@ -22,42 +22,40 @@ const generateManager = managerText => {
 };
 
 // create the employees section
-const generateEngineer = engineerText => {
+const generateEngineer = engineer => {
   return `
-  <section class="employee mt-3 row" id="aboutEmployee">
-          <h2>Employees</h2>
+  
 
           <!-- ENGINEER CARDS -->
           <div class="card shadow" style="width: 18rem;">
             <div class="card-body">
-              <h5 class="card-title">${name}</h5>
+              <h5 class="card-title">${engineer.name}</h5>
               <h6 class="card-subtitle mb-2 text-muted">Engineer</h6>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item"><i class="fa-solid fa-id-card"></i>  ${employeeId}</li>
-                <li class="list-group-item"><i class="fas-solid fa-at"></i>  <a href="mailto:${email}">${email}</a></li>
-                <li class="list-group-item"><i class="fa-brands fa-github-square"></i> <a href="https://github.com/${github}">GitHub: ${github}</a></li>
+                <li class="list-group-item"><i class="fa-solid fa-id-card"></i>  ${engineer.employeeId}</li>
+                <li class="list-group-item"><i class="fas-solid fa-at"></i>  <a href="mailto:${engineer.email}">${engineer.email}</a></li>
+                <li class="list-group-item"><i class="fa-brands fa-github-square"></i> <a href="https://github.com/${engineer.github}">GitHub: ${engineer.github}</a></li>
               </ul>
             </div>
           </div>
           <!-- END of EMPLOYEE CARDS -->
-  </section>
+
   `;
 };
 
 // create the intern section
-const generateIntern = internText => {
+const generateIntern = intern => {
   return `
   <!-- INTERN CARDS -->
-        <section class="intern mt-3 row" id="aboutIntern">
-          <h2>Interns</h2>
+        
           <div class="card shadow" style="width: 18rem;">
             <div class="card-body">
               <h5 class="card-title">Name</h5>
               <h6 class="card-subtitle mb-2 text-muted">Interns</h6>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item"><i class="fa-solid fa-id-card"></i>  ${employeeId}</li>
-                <li class="list-group-item"><i class="fas-solid fa-at"></i>  <a href="mailto:${email}">${email}</a></li>
-                <li class="list-group-item"><i class="fa-solid fa-graduation-cap"></i> School: ${school}</li>
+                <li class="list-group-item"><i class="fa-solid fa-id-card"></i>  ${intern.employeeId}</li>
+                <li class="list-group-item"><i class="fas-solid fa-at"></i>  <a href="mailto:${intern.email}">${intern.email}</a></li>
+                <li class="list-group-item"><i class="fa-solid fa-graduation-cap"></i> School: ${intern.school}</li>
               </ul>
             </div>
           </div>
@@ -68,8 +66,10 @@ const generateIntern = internText => {
 // create the export function to generate the whole page
 module.exports = templateData => {
   // destructure page data by section
-  // const { manager, engineer, intern } = templateData;
-
+  const { manager, engineer, intern } = templateData;
+  console.log(templateData);
+  console.log(engineer);
+  console.log(intern);
   return `
       <!DOCTYPE html>
     <html lang="en">
@@ -81,7 +81,7 @@ module.exports = templateData => {
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
       
-      <link rel="stylesheet" href="/./src/style.css">
+      <link rel="stylesheet" href="./style.css">
     </head>
     <body>
       <!-- HEADER SECTION -->
@@ -93,8 +93,15 @@ module.exports = templateData => {
       <!-- MAIN CONTENT SECTION -->
       <main class="container">
         ${generateManager(manager)}
-        ${generateEngineer(engineer)}
-        ${generateIntern(intern)}
+        <section class="employee mt-3 row" id="aboutEmployee">
+          <h2>Employees</h2>
+        ${engineer.map(engineer => generateEngineer(engineer)).join("")}
+        </section>
+        <section class="intern mt-3 row" id="aboutIntern">
+          <h2>Interns</h2>
+        ${intern.map(intern => generateIntern(intern)).join("")}
+        </section>
+
       </main>
       <!-- END OF MAIN -->
     </body>
